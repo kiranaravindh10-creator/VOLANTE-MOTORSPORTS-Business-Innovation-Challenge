@@ -1,0 +1,79 @@
+/*
+ * Print styles.
+ *  1. Whole-site print (Ctrl/Cmd + P): a clean, ink-friendly black-on-white handbook.
+ *  2. Snapshot-only print: triggered by the "Print / Save as PDF" button, which
+ *     adds `html.print-snapshot` for the duration of the print dialog.
+ * Print hooks use data attributes because component class names are hashed.
+ */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  body,
+  body *:not([data-print-sheet] *):not([data-print-sheet]) {
+    color: #111 !important;
+    background: transparent !important;
+    border-color: #bbb !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  [data-print='hide'],
+  .btn {
+    display: none !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Expand every collapsible so nothing is lost on paper. */
+  [data-collapse] {
+    grid-template-rows: 1fr !important;
+  }
+
+  [data-collapse] > * {
+    visibility: visible !important;
+  }
+
+  section {
+    padding-block: 24px !important;
+  }
+
+  article,
+  li,
+  tr {
+    break-inside: avoid;
+  }
+
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  /* ---------- Snapshot-only mode ---------- */
+  html.print-snapshot body *:not(:has([data-print-sheet])):not([data-print-sheet]):not([data-print-sheet] *) {
+    display: none !important;
+  }
+
+  html.print-snapshot *:has([data-print-sheet]) {
+    display: block !important;
+    position: static !important;
+    width: auto !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    transform: none !important;
+    overflow: visible !important;
+  }
+}

@@ -1,0 +1,222 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(128px, 17vw, 240px) clamp(56px, 7vw, 96px);
+  background: var(--ink-1000);
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: var(--ink-950);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% 50%;
+  filter: saturate(0.85) brightness(0.6) contrast(1.1);
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, var(--ink-900) 0%, rgb(8 9 10 / 0.62) 26%, rgb(8 9 10 / 0.72) 64%, var(--ink-1000) 100%),
+    linear-gradient(90deg, rgb(8 9 10 / 0.7) 0%, rgb(8 9 10 / 0.35) 100%);
+}
+
+@media (min-width: 900px) {
+  .scrim {
+    background:
+      linear-gradient(180deg, var(--ink-900) 0%, rgb(8 9 10 / 0.5) 26%, rgb(8 9 10 / 0.62) 64%, var(--ink-1000) 100%),
+      linear-gradient(90deg, rgb(8 9 10 / 0.86) 0%, rgb(8 9 10 / 0.25) 72%);
+  }
+}
+
+.flagRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-1);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.checker {
+  width: 30px;
+  height: 20px;
+  border: 1px solid var(--text-1);
+  background:
+    conic-gradient(var(--text-1) 25%, var(--ink-950) 0 50%, var(--text-1) 0 75%, var(--ink-950) 0) 0 0 / 10px 10px;
+}
+
+.title {
+  margin-top: 26px;
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 11.5vw, 11.5rem);
+  font-weight: 800;
+  line-height: 0.84;
+  letter-spacing: -0.012em;
+  text-transform: uppercase;
+}
+
+.title > span {
+  display: block;
+}
+
+.stop {
+  color: var(--accent-600);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: clamp(40px, 5vw, 64px);
+  border-top: 1px solid var(--line-3);
+}
+
+.step {
+  display: grid;
+  gap: 10px;
+  padding: 18px 16px 20px 0;
+  border-bottom: 1px solid var(--line-2);
+}
+
+.stepNum {
+  color: var(--accent-400);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+.stepText {
+  color: var(--text-2);
+  font-size: 1.0625rem;
+  line-height: 1.35;
+}
+
+.stepText strong {
+  display: block;
+  color: var(--text-1);
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: clamp(40px, 5vw, 56px);
+}
+
+.actions > a {
+  flex: 1 1 100%;
+}
+
+.submission {
+  margin-top: 24px;
+}
+
+.pending,
+.submitLink {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  padding: 14px 18px;
+  background: rgb(8 9 10 / 0.72);
+  line-height: 1.4;
+}
+
+.pending {
+  border: 1px dashed var(--line-3);
+}
+
+.pendingDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--caution);
+}
+
+.submitLabel {
+  color: var(--text-1);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.submitText {
+  color: var(--text-2);
+  font-size: 0.9375rem;
+}
+
+.submitLink {
+  border: 1px solid var(--text-1);
+  color: var(--text-1);
+  text-decoration: none;
+  transition:
+    background-color var(--dur-2) var(--ease-out),
+    color var(--dur-2) var(--ease-out);
+}
+
+.submitLink .submitText {
+  color: inherit;
+  font-weight: 600;
+}
+
+.submitLink:hover {
+  background: var(--text-1);
+  color: var(--ink-950);
+}
+
+.submitLink:hover .submitLabel {
+  color: inherit;
+}
+
+.host {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: clamp(64px, 8vw, 112px);
+  padding-top: 24px;
+  border-top: 1px solid var(--line-2);
+}
+
+@media (min-width: 480px) {
+  .actions > a {
+    flex: 0 0 auto;
+  }
+}
+
+@media (min-width: 900px) {
+  .steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .step {
+    padding-right: 24px;
+    border-bottom: 0;
+  }
+
+  .step + .step {
+    padding-left: 24px;
+    border-left: 1px solid var(--line-2);
+  }
+}

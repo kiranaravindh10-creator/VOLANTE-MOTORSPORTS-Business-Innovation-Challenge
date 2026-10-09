@@ -1,0 +1,228 @@
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+  background: var(--ink-900);
+  border-top: 1px solid var(--line-1);
+}
+
+/* Phase brackets: only shown on the single-row desktop track. */
+.phases {
+  display: none;
+}
+
+.track {
+  display: grid;
+}
+
+.day {
+  position: relative;
+  padding: 0 0 30px 44px;
+}
+
+/* Track line: vertical on mobile, horizontal from tablet up. */
+.day::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: -6px;
+  left: 7px;
+  width: 2px;
+  background: var(--line-3);
+}
+
+.day:last-child::before {
+  display: none;
+}
+
+.node {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 16px;
+  height: 16px;
+  background: var(--ink-900);
+  border: 2px solid var(--text-1);
+}
+
+/* Chequered flag for pitch day. */
+.day[data-final] .node {
+  top: -3px;
+  left: -3px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--text-1);
+  background:
+    conic-gradient(var(--text-1) 25%, var(--ink-950) 0 50%, var(--text-1) 0 75%, var(--ink-950) 0) 0 0 / 10px 10px;
+}
+
+.dayLabel {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  line-height: 1;
+}
+
+.dayWord {
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.dayNum {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 4vw, 3.75rem);
+  font-weight: 800;
+  line-height: 0.85;
+  font-variant-numeric: tabular-nums;
+}
+
+.dayPhase {
+  margin-top: 10px;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.dayTitle {
+  max-width: 30ch;
+  margin-top: 6px;
+  color: var(--text-1);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.day[data-final] .dayNum,
+.day[data-final] .dayPhase {
+  color: var(--accent-400);
+}
+
+.dayDate {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 6px;
+  background: var(--accent-600);
+  color: var(--on-accent);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: clamp(24px, 4vw, 48px);
+  padding-top: 20px;
+  border-top: 1px solid var(--line-2);
+  color: var(--text-2);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.disclaimer svg {
+  flex: none;
+  margin-top: 1px;
+  color: var(--text-1);
+}
+
+.disclaimer strong {
+  color: var(--text-1);
+  font-weight: 700;
+}
+
+/* ---------- Tablet: two rows of five ---------- */
+@media (min-width: 720px) {
+  .track {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    row-gap: 48px;
+  }
+
+  .day {
+    padding: 34px 18px 0 0;
+  }
+
+  .day::before,
+  .day:last-child::before {
+    display: block;
+    top: 7px;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 2px;
+  }
+
+  .day[data-final]::before {
+    right: auto;
+    width: 22px;
+  }
+
+  .dayTitle {
+    max-width: none;
+  }
+}
+
+/* ---------- Desktop: one continuous lap ---------- */
+@media (min-width: 1200px) {
+  .phases {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    margin-bottom: 26px;
+  }
+
+  .phase {
+    position: relative;
+    padding: 0 18px 12px 0;
+    color: var(--text-2);
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* Bracket under each phase label. */
+  .phase::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 18px;
+    bottom: 0;
+    height: 7px;
+    border: 1px solid var(--line-3);
+    border-bottom: 0;
+  }
+
+  .phase:last-child {
+    color: var(--accent-400);
+  }
+
+  .track {
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+  }
+
+  .dayPhase {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    white-space: nowrap !important;
+  }
+
+  .dayTitle {
+    margin-top: 14px;
+    font-size: 0.9375rem;
+  }
+}

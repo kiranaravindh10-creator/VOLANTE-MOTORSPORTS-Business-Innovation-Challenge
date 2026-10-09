@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Beyond the Buggy: Business Innovation Challenge | Team Volante Motorsports</title>
+    <meta
+      name="description"
+      content="The official brief for Beyond the Buggy, Team Volante Motorsports' Business Innovation Challenge: four teams, four business ideas, one winning pitch. Challenges, roles, deliverables, timeline and judging."
+    />
+    <meta name="theme-color" content="#0b0c0e" />
+    <meta name="color-scheme" content="dark" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Beyond the Buggy: Business Innovation Challenge" />
+    <meta
+      property="og:description"
+      content="Four teams. Four business ideas. One winning pitch. The complete competition brief from Team Volante Motorsports."
+    />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <script>
+      // Motion is opt-in: content is fully visible unless JS runs AND the visitor
+      // has no reduced-motion preference. If the app never boots, a safety timer
+      // removes the class so nothing stays hidden.
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('js');
+        try {
+          if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'IntersectionObserver' in window) {
+            root.classList.add('motion');
+            setTimeout(function () {
+              if (!window.__tvBooted) root.classList.remove('motion');
+            }, 4000);
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"><!--app-html--></div>
+    <script type="module" src="/src/entry-client.tsx"></script>
+  </body>
+</html>

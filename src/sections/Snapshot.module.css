@@ -1,0 +1,451 @@
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+  background-color: var(--ink-850);
+  /* Drafting-table dot grid. */
+  background-image: radial-gradient(rgb(255 255 255 / 0.06) 1px, transparent 1.3px);
+  background-size: 24px 24px;
+  border-top: 1px solid var(--line-1);
+}
+
+.layout {
+  display: grid;
+  gap: 48px;
+}
+
+/* ---------- Aside ---------- */
+.steps {
+  display: grid;
+  border-top: 1px solid var(--line-2);
+}
+
+.steps li {
+  display: flex;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line-1);
+  color: var(--text-1);
+  line-height: 1.5;
+}
+
+.stepNum {
+  flex: none;
+  padding-top: 3px;
+  color: var(--accent-400);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.printBox {
+  display: grid;
+  justify-items: start;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.printNote {
+  max-width: 40ch;
+  color: var(--text-3);
+  font-size: var(--fs-small);
+  line-height: 1.5;
+}
+
+/* ---------- The sheet ---------- */
+.sheet {
+  --focus-ring: var(--paper-ink);
+  position: relative;
+  padding: clamp(20px, 4vw, 48px);
+  background: var(--paper);
+  color: var(--paper-ink);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  box-shadow: 0 40px 80px -30px rgb(0 0 0 / 0.75);
+}
+
+.sheetHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 24px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--paper-ink);
+}
+
+.sheetKicker {
+  color: var(--paper-muted);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sheetTitle {
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+  font-weight: 800;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.sheetMeta {
+  display: flex;
+  gap: 14px;
+}
+
+.sheetMeta div {
+  display: grid;
+  gap: 4px;
+}
+
+.sheetMeta dt,
+.fieldLabel,
+.table th {
+  color: var(--paper-ink);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sheetMeta dd {
+  margin: 0;
+}
+
+.field {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.fieldValue {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.blank {
+  display: inline-block;
+  padding: 4px 9px;
+  border: 1px dashed #8f8b82;
+  background: rgb(255 255 255 / 0.6);
+  color: var(--paper-muted);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.blankBlock {
+  display: block;
+  min-height: 4.4em;
+}
+
+.hint {
+  color: var(--paper-muted);
+  font-size: 0.78rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.identity {
+  display: grid;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.brandName {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.brandName .blank {
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: 0.01em;
+}
+
+.story,
+.funding {
+  display: grid;
+  gap: 20px 28px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.economics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 22px 0 0;
+  border: 1.5px solid var(--paper-ink);
+}
+
+.economics .field {
+  padding: 12px 14px 14px;
+  border-right: 1px solid var(--paper-line);
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.economics .field:nth-child(2n) {
+  border-right: 0;
+}
+
+.economics .field:nth-child(n + 3) {
+  border-bottom: 0;
+}
+
+.economics .blank {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+.economics .hint {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-style: normal;
+}
+
+.funds {
+  padding-top: 22px;
+}
+
+.table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.8125rem;
+}
+
+.table th {
+  padding: 0 8px 8px 0;
+  border-bottom: 1.5px solid var(--paper-ink);
+  font-size: 0.625rem;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+.table td {
+  padding: 8px 8px 8px 0;
+  border-bottom: 1px solid var(--paper-line);
+  vertical-align: top;
+}
+
+.table th:nth-child(1) {
+  width: 28%;
+}
+
+.table th:nth-child(2) {
+  width: 23%;
+}
+
+.table th:nth-child(3) {
+  width: 27%;
+}
+
+.table td .blank {
+  display: block;
+  padding: 4px 5px;
+  font-size: 0.6875rem;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 560px) {
+  .table td .blank {
+    padding: 4px 6px;
+    font-size: 0.75rem;
+  }
+}
+
+.sheetFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px 24px;
+  margin-top: 24px;
+  padding-top: 14px;
+  border-top: 2px solid var(--paper-ink);
+  color: var(--paper-muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.sheetFoot > p:first-child {
+  max-width: 52ch;
+}
+
+/* Engineering-drawing title block. */
+.titleBlock {
+  display: flex;
+  border: 1px solid var(--paper-ink);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--paper-ink);
+}
+
+.titleBlock span {
+  padding: 5px 9px;
+}
+
+.titleBlock span + span {
+  border-left: 1px solid var(--paper-ink);
+}
+
+@media (min-width: 640px) {
+  .story {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .funding {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+@media (min-width: 760px) {
+  .economics {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .economics .field {
+    border-bottom: 0;
+  }
+
+  .economics .field:nth-child(2n) {
+    border-right: 1px solid var(--paper-line);
+  }
+
+  .economics .field:last-child {
+    border-right: 0;
+  }
+}
+
+@media (min-width: 1100px) {
+  .layout {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--col-gap);
+    align-items: start;
+  }
+
+  .aside {
+    grid-column: 1 / span 4;
+    position: sticky;
+    top: calc(var(--nav-h) + 32px);
+  }
+
+  .sheet {
+    grid-column: 6 / -1;
+  }
+}
+
+/* ---------- Print: a clean, single A4 sheet ---------- */
+@media print {
+  .section {
+    background: none !important;
+  }
+
+  .sheet {
+    padding: 0 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    font-size: 9pt;
+    line-height: 1.35;
+  }
+
+  .sheetHead {
+    padding-bottom: 10px;
+  }
+
+  .sheetTitle {
+    font-size: 20pt;
+  }
+
+  .brandName {
+    font-size: 15pt;
+  }
+
+  .identity {
+    gap: 8px;
+    padding: 10px 0;
+  }
+
+  .story,
+  .funding {
+    gap: 8px 20px;
+    padding: 10px 0;
+  }
+
+  .story {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .funding {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .field {
+    gap: 4px;
+  }
+
+  .fieldValue {
+    gap: 3px;
+  }
+
+  .economics {
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 10px;
+  }
+
+  .economics .field {
+    padding: 7px 10px 8px;
+    border-bottom: 0;
+    border-right: 1px solid var(--paper-line);
+  }
+
+  .economics .field:last-child {
+    border-right: 0;
+  }
+
+  .blank {
+    padding: 2px 7px;
+    background: none !important;
+    font-size: 8.5pt;
+  }
+
+  .blankBlock {
+    min-height: 4.4em;
+  }
+
+  .hint {
+    font-size: 7.5pt;
+  }
+
+  .funds {
+    padding-top: 10px;
+  }
+
+  .table td {
+    padding: 4px 6px 4px 0;
+  }
+
+  .table td .blank {
+    padding: 2px 5px;
+    font-size: 8pt;
+  }
+
+  .sheetFoot {
+    margin-top: 12px;
+    padding-top: 8px;
+    font-size: 7.5pt;
+  }
+}

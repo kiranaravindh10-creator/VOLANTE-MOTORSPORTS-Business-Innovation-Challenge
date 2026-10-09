@@ -1,0 +1,152 @@
+.footer {
+  padding-block: clamp(56px, 7vw, 88px) 32px;
+  background: var(--ink-1000);
+  border-top: 1px solid var(--line-2);
+}
+
+.top {
+  display: grid;
+  gap: 40px;
+}
+
+.brand {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+}
+
+.event {
+  margin-top: 8px;
+  color: var(--text-1);
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.org {
+  max-width: 36ch;
+  color: var(--text-3);
+  font-size: var(--fs-small);
+  line-height: 1.5;
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.colTitle {
+  margin-bottom: 14px;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.links {
+  display: grid;
+  gap: 2px;
+}
+
+.links a {
+  display: inline-block;
+  padding: 6px 0;
+  color: var(--text-2);
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: color var(--dur-2) var(--ease-out);
+}
+
+.links a:hover {
+  color: var(--text-1);
+}
+
+.noteList {
+  display: grid;
+  gap: 10px;
+}
+
+.noteList li {
+  display: flex;
+  gap: 10px;
+  color: var(--text-3);
+  font-size: var(--fs-small);
+  line-height: 1.5;
+}
+
+.noteList li::before {
+  content: '';
+  flex: none;
+  width: 6px;
+  height: 6px;
+  margin-top: 0.55em;
+  background: var(--ink-600);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 28px;
+  margin-top: clamp(48px, 6vw, 72px);
+  padding-top: 22px;
+  border-top: 1px solid var(--line-1);
+  color: var(--text-3);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.credits {
+  flex: 1 1 380px;
+}
+
+.credits a,
+.toTop {
+  color: var(--text-2);
+  text-decoration: underline;
+  text-decoration-color: var(--line-3);
+  text-underline-offset: 3px;
+}
+
+.credits a:hover,
+.toTop:hover {
+  color: var(--text-1);
+}
+
+.toTop {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+@media (min-width: 900px) {
+  .top {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--col-gap);
+  }
+
+  .brand {
+    grid-column: 1 / span 4;
+  }
+
+  .nav {
+    grid-column: 6 / span 4;
+  }
+
+  .notes {
+    grid-column: 10 / -1;
+  }
+}

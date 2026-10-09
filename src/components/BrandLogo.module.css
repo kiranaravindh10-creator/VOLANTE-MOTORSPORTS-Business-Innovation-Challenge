@@ -1,0 +1,73 @@
+/* Full supplied lockup: height-constrained only, so proportions are always preserved. */
+.lockup {
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.lockup.feature {
+  height: 96px;
+}
+
+.lockup.footer {
+  height: 100px;
+}
+
+/* Compact: V emblem + team name. */
+.compact {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.mark {
+  width: auto;
+  max-width: none;
+  height: 38px;
+}
+
+.wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.team {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.375rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-1);
+}
+
+.sub {
+  margin-top: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.59rem;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+
+.compact.feature .mark,
+.compact.footer .mark {
+  height: 52px;
+}
+
+.compact.feature .team,
+.compact.footer .team {
+  font-size: 1.75rem;
+}
+
+@media (min-width: 1024px) {
+  .mark {
+    height: 44px;
+  }
+
+  .lockup.feature {
+    height: 150px;
+  }
+}

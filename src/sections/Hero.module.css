@@ -1,0 +1,491 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--ink-1000);
+}
+
+/* ---------- Background photograph ---------- */
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background: var(--ink-900);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 42%;
+  filter: brightness(0.6) contrast(1.15);
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(8 9 10 / 0.8) 0%, rgb(8 9 10 / 0.5) 28%, rgb(8 9 10 / 0.74) 52%, var(--ink-950) 92%);
+}
+
+@media (min-width: 1024px) {
+  .scrim {
+    background:
+      linear-gradient(90deg, rgb(8 9 10 / 0.92) 0%, rgb(8 9 10 / 0.7) 36%, rgb(8 9 10 / 0.12) 70%, rgb(8 9 10 / 0.4) 100%),
+      linear-gradient(0deg, var(--ink-950) 0%, rgb(11 12 14 / 0) 40%),
+      linear-gradient(180deg, rgb(8 9 10 / 0.65) 0%, rgb(8 9 10 / 0) 24%);
+  }
+}
+
+/* ---------- Engineering column lines (align with the 4/12-col grid) ---------- */
+.columns {
+  --cols: 4;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--line-1) 1px, transparent 1px),
+    linear-gradient(var(--line-1), var(--line-1));
+  background-size:
+    calc((100% + var(--col-gap)) / var(--cols)) 100%,
+    1px 100%;
+  background-position:
+    0 0,
+    right top;
+  background-repeat: repeat-x, no-repeat;
+  background-origin: content-box;
+  background-clip: content-box;
+}
+
+@media (min-width: 1024px) {
+  .columns {
+    --cols: 12;
+  }
+}
+
+/* ---------- Content ---------- */
+.inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4.5vh, 48px);
+  padding-top: calc(var(--nav-h) + clamp(24px, 4vh, 48px));
+  padding-bottom: clamp(36px, 7vh, 72px);
+}
+
+.topline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 20px;
+}
+
+.lights {
+  display: inline-flex;
+  gap: 6px;
+  padding: 7px 9px;
+  background: rgb(8 9 10 / 0.75);
+  border: 1px solid var(--line-2);
+}
+
+.lights span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2a1110;
+  box-shadow: inset 0 0 0 1px rgb(255 77 69 / 0.28);
+}
+
+.eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.eyebrowMain {
+  color: var(--text-1);
+}
+
+.eyebrowSub {
+  color: var(--text-2);
+}
+
+.host {
+  display: none;
+  align-items: center;
+  gap: 14px;
+  margin-left: auto;
+}
+
+/* ---------- Headline ---------- */
+.title {
+  font-family: var(--font-display);
+  /* Width- and height-aware, so the whole opening fits a laptop screen. */
+  font-size: clamp(4.25rem, min(19vw, 21vh), 13.5rem);
+  font-size: clamp(4.25rem, min(19vw, 21svh), 13.5rem);
+  font-weight: 800;
+  line-height: 0.8;
+  letter-spacing: -0.012em;
+  text-transform: uppercase;
+}
+
+.line {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.03em 0.05em;
+  margin-block: -0.03em -0.05em;
+  white-space: nowrap;
+}
+
+.line > span {
+  display: inline-block;
+}
+
+.stop {
+  color: var(--accent-600);
+}
+
+/* ---------- Copy + actions ---------- */
+.lower {
+  display: grid;
+  gap: 44px;
+}
+
+.lede {
+  max-width: 24ch;
+  font-size: clamp(1.25rem, 2.1vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+}
+
+.mantra {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 18px;
+  color: var(--text-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mantra span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mantra span::before {
+  content: '';
+  width: 10px;
+  height: 2px;
+  background: var(--accent-600);
+}
+
+@media (min-width: 1280px) {
+  .mantra {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px 0;
+  }
+
+  .mantra span::before {
+    display: none;
+  }
+
+  .mantra span:not(:last-child)::after {
+    content: '/';
+    margin: 0 12px;
+    color: var(--accent-400);
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.actions > a {
+  flex: 1 1 100%;
+}
+
+@media (min-width: 480px) {
+  .actions > a {
+    flex: 0 0 auto;
+  }
+}
+
+/* ---------- Starting grid ---------- */
+.gridTitle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 16px;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: rgb(11 12 14 / 0.84);
+  border-left: 2px solid var(--accent-600);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.gridNote {
+  color: var(--text-2);
+  letter-spacing: 0.1em;
+}
+
+.slots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 12px;
+  align-items: start;
+}
+
+/* Staggered pairs, like cars lined up on a starting grid. */
+.slotItem:nth-child(even) {
+  margin-top: 26px;
+}
+
+.slot {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  padding: 18px 14px 14px;
+  background: rgb(11 12 14 / 0.84);
+  color: var(--text-1);
+  text-decoration: none;
+  transition: background-color var(--dur-2) var(--ease-out);
+}
+
+/* Painted grid-box bracket. */
+.slot::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 16px;
+  border: 2px solid var(--line-4);
+  border-bottom: 0;
+  transition: border-color var(--dur-2) var(--ease-out);
+}
+
+.slot:hover {
+  background: rgb(20 23 27 / 0.92);
+}
+
+.slot:hover::before,
+.slot:focus-visible::before {
+  border-color: var(--accent);
+}
+
+.slotTeam {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.slotTeam::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+}
+
+.slotName {
+  margin-top: 4px;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 5.6vw, 2rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
+}
+
+.slotCat {
+  padding-right: 22px;
+  color: var(--text-2);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+}
+
+.slotArrow {
+  position: absolute;
+  right: 12px;
+  bottom: 14px;
+  color: var(--text-3);
+  transition:
+    transform var(--dur-2) var(--ease-out),
+    color var(--dur-2) var(--ease-out);
+}
+
+.slot:hover .slotArrow {
+  color: var(--accent);
+  transform: translateX(3px);
+}
+
+/* ---------- Larger screens ---------- */
+@media (min-width: 768px) {
+  .lineIndent {
+    padding-left: 0.6em;
+  }
+
+  .host {
+    display: inline-flex;
+  }
+
+  .slotName {
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    flex: 1;
+  }
+
+  .title {
+    margin-top: auto;
+  }
+
+  .lower {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--col-gap);
+    align-items: end;
+  }
+
+  .copy {
+    grid-column: 1 / span 6;
+  }
+
+  .grid {
+    grid-column: 8 / -1;
+  }
+}
+
+@media (min-width: 1280px) {
+  .slots {
+    gap: 16px;
+  }
+}
+
+/* ---------- Entrance (motion only) ---------- */
+:global(.motion) .photo {
+  animation: settle 1800ms var(--ease-out) both;
+}
+
+:global(.motion) .lights span {
+  /* Five reds light one by one, then all go out together: lights out. */
+  animation: lightOn calc(1240ms - var(--i) * 180ms) linear calc(260ms + var(--i) * 180ms) 1 none;
+}
+
+:global(.motion) .line > span {
+  animation: rise 1100ms var(--ease-out) both;
+  animation-delay: calc(120ms + var(--l) * 110ms);
+}
+
+:global(.motion) .topline,
+:global(.motion) .copy > *,
+:global(.motion) .gridTitle,
+:global(.motion) .slotItem {
+  animation: fadeUp 900ms var(--ease-out) both;
+}
+
+:global(.motion) .lede {
+  animation-delay: 420ms;
+}
+
+:global(.motion) .mantra {
+  animation-delay: 500ms;
+}
+
+:global(.motion) .actions {
+  animation-delay: 580ms;
+}
+
+:global(.motion) .gridTitle {
+  animation-delay: 560ms;
+}
+
+:global(.motion) .slotItem {
+  animation-delay: calc(640ms + var(--s) * 80ms);
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes lightOn {
+  from,
+  to {
+    background: var(--light-red);
+    box-shadow: inset 0 0 0 1px #ff4d45;
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translate3d(0, 104%, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  .hero {
+    min-height: 0;
+  }
+
+  .lights,
+  .actions,
+  .slotArrow {
+    display: none;
+  }
+
+  .inner {
+    padding-top: 0;
+  }
+}
